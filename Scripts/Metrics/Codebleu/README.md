@@ -1,9 +1,5 @@
 ### A comparation between WaDec and Ghidra
-\begin{figure}[ht]
-    \centering    \includegraphics[width=\linewidth]{figures/codebleu_limit/case.pdf}
-    \caption{Case study.}
-    \label{fig:case_study}
-\end{figure}
+[case.pdf](https://github.com/user-attachments/files/15656559/case.pdf)
 We can see apparent issues with the decompilation result of the Wasm plugin in Ghidra. First, there are errors in the decompilation result, which clearly indicates that Ghidra has certain problems with decompiling Wasm. Second, by comparing Ghidra's decompilation result with the source code, we can find that Ghidra cannot recover string constants, which severely affects the semantics and I/O of the code. Moreover, compared with the source code and WaDec's output, there is a significant code bloat. Finally, there are varying degrees of inconsistencies in function names, variable types, and other aspects.
 
 ### Limitations of CodeBLEU
