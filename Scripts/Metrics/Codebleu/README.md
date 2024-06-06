@@ -4,7 +4,7 @@
     \caption{Case study.}
     \label{fig:case_study}
 \end{figure}
-We can see apparent issues with the decompilation result of the Wasm plugin in \texttt{Ghidra}. First, there are errors in the decompilation result, which clearly indicates that \texttt{Ghidra} has certain problems with decompiling Wasm. Second, by comparing \texttt{Ghidra}'s decompilation result with the source code, we can find that \texttt{Ghidra} cannot recover string constants, which severely affects the semantics and I/O of the code. Moreover, compared with the source code and \tool{}'s output, there is a significant code bloat. Finally, there are varying degrees of inconsistencies in function names, variable types, and other aspects.
+We can see apparent issues with the decompilation result of the Wasm plugin in Ghidra. First, there are errors in the decompilation result, which clearly indicates that Ghidra has certain problems with decompiling Wasm. Second, by comparing Ghidra's decompilation result with the source code, we can find that Ghidra cannot recover string constants, which severely affects the semantics and I/O of the code. Moreover, compared with the source code and WaDec's output, there is a significant code bloat. Finally, there are varying degrees of inconsistencies in function names, variable types, and other aspects.
 
 ### Limitations of CodeBLEU
 During our evaluation phase, we used CodeBLEU as one of our metrics. However, in calculating CodeBLEU, we encountered numerous limitations, particularly its inadequacy in accurately evaluating the similarity of C code in many instances. To illustrate these issues, we have selected several representative examples for case study analysis.
