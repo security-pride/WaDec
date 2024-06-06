@@ -32,9 +32,21 @@ cd WaDec-EDDE
 ### [Finetuning](Scripts/finetuning.ipynb)
 
 ### [Infering](Scripts/infering.py)
-
+```bash
+python infering.py
+  --base_model sxysxy/Wat2c
+  --wat_path {wat_path}
+  --dst_path {output_path}
+  --invoke {invoked_functions}
+```
 ### [Evaluation](Scripts/Metrics)
 
 #### [CodeBLEU](Scripts/Metrics/Codebleu/README.md)
+```
+python cal_codebleu
+  --reference {source_c}
+  --prediction {decompiled_c}
+  --lang c
+```
 
-#### [Others](Scripts/Metrics/Similarity_codebloat)
+#### [Others](Scripts/Metrics/Similarity_codebloat/eval.ipynb)
