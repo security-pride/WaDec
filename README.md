@@ -29,12 +29,12 @@ Clone the repository to your local machine:
 git clone https://anonymous.4open.science/r/WaDec-EDDE
 cd WaDec-EDDE
 ```
-### Finetuning
+### [Finetuning](Scripts/finetuning.ipynb)
 
-### Infering
+### [Infering](Scripts/infering.py)
 
-### Evaluating
+### [Evaluation](Scripts/Metrics)
 
 #### [CodeBLEU](Scripts/Metrics/Codebleu/README.md)
 
-#### Others
+#### [Others](Scripts/Metrics/Similarity_codebloat)
