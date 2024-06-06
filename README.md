@@ -29,4 +29,12 @@ Clone the repository to your local machine:
 git clone https://anonymous.4open.science/r/WaDec-EDDE
 cd WaDec-EDDE
 ```
+### Finetuning
 
+### Infering
+
+### Evaluating
+
+#### [CodeBLEU](Scripts/Metrics/Codebleu/README.md)
+
+#### Others
