@@ -116,6 +116,6 @@ def get_AED_SCORE(original_path,decompiled_path):
     return RES.Answer()
  
 if __name__ == "__main__":
-    original_path = '/home/sxy/wasm2c/z_test/b_test/b_renamed.c'
-    decompiled_path = '/home/sxy/wasm2c/z_test/b_test/b_decompiled.c'
+    original_path = 'xxx_renamed.c'
+    decompiled_path = 'xxx_decompiled.c'
     print(get_AED_SCORE(original_path,decompiled_path))
