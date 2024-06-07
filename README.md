@@ -56,5 +56,4 @@ python cal_codebleu.py
 ```
 
 #### Others
-Besides, we also use other metrics to evaluate our method, such as AST Edit Distance Similarity, Cosine Similarity, Clyclomatic Complexity Similarity, and codebloat rate.
-For calculating then, please run [eval.ipynb](Scripts/Metrics/Similarity_codebloat/eval.ipynb)
+Besides, we also evaluate our method using additional metrics such as AST Edit Distance Similarity, Cosine Similarity, Cyclomatic Complexity Similarity, and code bloat rate. To compute these metrics, please run [eval.ipynb](Scripts/Metrics/Similarity_codebloat/eval.ipynb)
