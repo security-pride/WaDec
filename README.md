@@ -30,7 +30,8 @@ git clone https://anonymous.4open.science/r/WaDec-EDDE
 cd WaDec-EDDE
 ```
 
-### [Infering](Scripts/infering.py)
+### Infering
+[infering.py](Scripts/infering.py)
 ```bash
 python infering.py
   --base_model sxysxy/Wat2c
@@ -40,7 +41,8 @@ python infering.py
 ```
 ### [Evaluation](Scripts/Metrics)
 
-#### [CodeBLEU](Scripts/Metrics/Codebleu/README.md)
+#### CodeBLEU
+[cal_codebleu](Scripts/Metrics/Codebleu/README.md)
 ```
 python cal_codebleu
   --reference {source_c}
@@ -48,4 +50,6 @@ python cal_codebleu
   --lang c
 ```
 
-#### [Others](Scripts/Metrics/Similarity_codebloat/eval.ipynb)
+#### Others
+
+[Similarities & Codebloat](Scripts/Metrics/Similarity_codebloat/eval.ipynb)
