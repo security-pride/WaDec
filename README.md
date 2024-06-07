@@ -4,7 +4,7 @@ WaDec is an approach leveraging a fine-tuned LLM to decompile Wasm binary code i
 
 ## Dataset
 
-Our dataset is specifically designed for decompiling WebAssembly (Wasm). It includes100k+ pairs of WebAssembly Text (Wat) snippets and C code snippets at the loop level, providing a finer granularity than function-level datasets. The dataset has been uploaded to **Hugging Face**, and it is available at (https://huggingface.co/wadecc/FGW2C). The main features of the dataset are as follows:
+Our dataset is specifically designed for decompiling WebAssembly (Wasm). It includes100k+ pairs of WebAssembly Text (Wat) snippets and C code snippets at the loop level, providing a finer granularity than function-level datasets. The dataset has been uploaded to **Hugging Face**, and it is available at (https://huggingface.co/datasets/wadecc/FGW2C). The main features of the dataset are as follows:
 
 - **Wat snippet**: Segmented based on loop blocks.
 - **C snippet**: Segmented based on loop blocks, corresponding to wat snippet.
