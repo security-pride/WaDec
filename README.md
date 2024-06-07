@@ -34,7 +34,7 @@ cd WaDec-EDDE
 [infering.py](Scripts/infering.py)
 ```bash
 python infering.py
-  --base_model sxysxy/Wat2c
+  --base_model wadecc/Wat2c
   --wat_path {wat_path}
   --dst_path {output_path}
   --invoke {invoked_functions}
