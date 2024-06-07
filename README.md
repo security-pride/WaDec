@@ -42,7 +42,7 @@ python infering.py
 ### Evaluation
 
 #### CodeBLEU
-External Treat to Validity: the limitations of CodeBLEU: [cal_codebleu](Scripts/Metrics/Codebleu/README.md)
+External Threat to Validity: the limitations of CodeBLEU: [Limits of CodeBLEU](Scripts/Metrics/Codebleu/README.md)
 ```
 python cal_codebleu.py
   --reference {source_c}
