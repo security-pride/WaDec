@@ -23,6 +23,6 @@ def get_COS_SCORE(original_path,decompiled_path):
     return similarity
 
 if __name__ == '__main__':
-    original_path = '/home/sxy/wasm2c/z_test/b_test/b_renamed.c'
-    decompiled_path = '/home/sxy/wasm2c/z_test/b_test/b_decompiled.c'
+    original_path = 'xxx_renamed.c'
+    decompiled_path = 'xxx_decompiled.c'
     get_COS_SCORE(original_path,decompiled_path)
