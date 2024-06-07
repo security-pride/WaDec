@@ -114,7 +114,44 @@ class WatModule:
                         }
                         self.sections[key][data_name] = obj
                 break
+    def get_offset_from_str(self,string:str):
+        pat = re.compile(r'\\[0-9a-fA-F]{2}')
+        string = string.replace('\n','\\0a') + '\\00'
+        s = ""
+        for _, item in self.sections["data"].items():
+            data_str = item["data_str"]
+            if string in data_str:
+                i = data_str.find(string)
+                s = data_str[:i]
+                break
+        offset = 0
+        j = 0
+        while(j < len(s)):
+            if pat.fullmatch(s[j:j+3]):
+                j += 3
+            else:
+                j += 1
+            offset += 1
+        return offset
     
+    def get_str_by_offset(self,const_offset:int):
+        pat = re.compile(r'\\[0-9a-fA-F]{2}')
+        data = ""
+        for _, items in self.data_const_strs.items():
+            for _, dataseg_start, data_str in items:
+                dataseg_start = int(dataseg_start)
+                if dataseg_start + len(data_str) > const_offset >= dataseg_start:
+                    offset = const_offset - dataseg_start
+                    j = 0
+                    for _ in range(offset):
+                        if pat.fullmatch(data_str[j:j+3]):
+                            j += 3
+                        else:
+                            j += 1
+                    strlength = data_str[j:].find('\\00')
+                    data = data_str[j:j+strlength]
+                    break
+        return data
     def simplify_local_vars_dict(self,func:str):
         match = self.local_x.search(func)
         var_dict = {}
