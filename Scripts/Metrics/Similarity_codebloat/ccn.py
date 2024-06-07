@@ -56,6 +56,6 @@ def get_CCN_SCORE(original_path, decompiled_path,mode = 1):
 
 
 if __name__ == "__main__":
-    original_path = '/home/sxy/wasm2c/z_test/b_test/b.c'
-    decompiled_path = '/home/sxy/wasm2c/z_test/b_test/b_decompiled.c'
+    original_path = 'xxx_renamed.c'
+    decompiled_path = 'xxx_decompiled.c'
     print(get_CCN_SCORE(original_path, decompiled_path))
