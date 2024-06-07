@@ -30,7 +30,7 @@ git clone https://anonymous.4open.science/r/WaDec-EDDE
 cd WaDec-EDDE
 ```
 
-### Infering
+### 1. Infering
 
 Our fine-tuned LLM has been uploaded to **Hugging Face**, and it can be accessed via (https://huggingface.co/wadecc/Wat2c).
 
@@ -42,7 +42,7 @@ python infering.py
   --dst_path {output_path}
   --invoke {invoked_functions}
 ```
-### Evaluation
+### 2. Evaluation
 
 #### CodeBLEU
 In Section 5.2 of our paper, we disscuss one of the External Threats to Validity, i.e., **the limitations of CodeBLEU**, which is detailed in -> [Limitations of CodeBLEU](Scripts/Metrics/Codebleu/README.md)
@@ -57,6 +57,14 @@ python cal_codebleu.py
 
 #### Others
 Besides, we also evaluate our method using additional metrics such as AST Edit Distance Similarity, Cosine Similarity, Cyclomatic Complexity Similarity, and code bloat rate. To compute these metrics, please run [eval.ipynb](Scripts/Metrics/Similarity_codebloat/eval.ipynb)
+
+### 3. Comparation between WaDec and Ghidra
+
+<p align="center">
+  <img src="Scripts/Metrics/Codebleu/figures/case.png" alt="case" width="80%"/>
+</p>
+
+We can see apparent issues with the decompilation result of the Wasm plugin in Ghidra. First, there are errors in the decompilation result, which clearly indicates that Ghidra has certain problems with decompiling Wasm. Second, by comparing Ghidra's decompilation result with the source code, we can find that Ghidra cannot recover string constants, which severely affects the semantics and I/O of the code. Moreover, compared with the source code and WaDec's output, there is a significant code bloat. Finally, there are varying degrees of inconsistencies in function names, variable types, and other aspects.
 
 #### :)
 We thank all the reviewers for the valuable feedback!
