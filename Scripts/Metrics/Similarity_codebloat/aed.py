@@ -1,7 +1,7 @@
 import math
 import numpy
 from tree_sitter import Language, Parser, Node
-C_LANGUAGE = Language('/home/sxy/tree_sitter/build/my-languages.so', 'c')
+C_LANGUAGE = Language(f'{os.getcwd()}/Metrics/Codebleu/so/my-languages.so', 'c')
 parser = Parser()
 parser.set_language(C_LANGUAGE)
  
