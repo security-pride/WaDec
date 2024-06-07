@@ -45,7 +45,7 @@ python infering.py
 ### Evaluation
 
 #### CodeBLEU
-In Section 5.2 of our paper, we disscuss one of the External Threats to Validity, i.e., **the limitations of CodeBLEU**, which is detailed in -> [Limits of CodeBLEU](Scripts/Metrics/Codebleu/README.md)
+In Section 5.2 of our paper, we disscuss one of the External Threats to Validity, i.e., **the limitations of CodeBLEU**, which is detailed in -> [Limitations of CodeBLEU](Scripts/Metrics/Codebleu/README.md)
 
 For calculating CodeBLEU scores, please run [cal_codebleu.py](Scripts/Metrics/Codebleu/cal_codebleu.py):
 ```
@@ -57,3 +57,6 @@ python cal_codebleu.py
 
 #### Others
 Besides, we also evaluate our method using additional metrics such as AST Edit Distance Similarity, Cosine Similarity, Cyclomatic Complexity Similarity, and code bloat rate. To compute these metrics, please run [eval.ipynb](Scripts/Metrics/Similarity_codebloat/eval.ipynb)
+
+#### :)
+We thanks all the reviewers for your valuable feedback!
