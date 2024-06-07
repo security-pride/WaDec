@@ -30,9 +30,7 @@ git clone https://anonymous.4open.science/r/WaDec-EDDE
 cd WaDec-EDDE
 ```
 ### Finetuning
-```python
-
-```
+[finetuning.ipynb](Scripts/finetuning.ipynb)
 ### Infering
 [infering.py](Scripts/infering.py)
 ```bash
