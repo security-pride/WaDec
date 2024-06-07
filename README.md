@@ -44,7 +44,7 @@ python infering.py
 #### CodeBLEU
 External Treat to Validity: the limitations of CodeBLEU: [cal_codebleu](Scripts/Metrics/Codebleu/README.md)
 ```
-python cal_codebleu
+python cal_codebleu.py
   --reference {source_c}
   --prediction {decompiled_c}
   --lang c
