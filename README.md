@@ -39,7 +39,7 @@ python infering.py
   --dst_path {output_path}
   --invoke {invoked_functions}
 ```
-### [Evaluation](Scripts/Metrics)
+### Evaluation
 
 #### CodeBLEU
 [cal_codebleu](Scripts/Metrics/Codebleu/README.md)
