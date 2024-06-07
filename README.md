@@ -29,7 +29,6 @@ Clone the repository to your local machine:
 git clone https://anonymous.4open.science/r/WaDec-EDDE
 cd WaDec-EDDE
 ```
-### [Finetuning](Scripts/finetuning.ipynb)
 
 ### [Infering](Scripts/infering.py)
 ```bash
