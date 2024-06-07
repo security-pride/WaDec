@@ -30,7 +30,7 @@ git clone https://anonymous.4open.science/r/WaDec-EDDE
 cd WaDec-EDDE
 ```
 
-### 1. Infering
+### Infering
 
 Our fine-tuned LLM has been uploaded to **Hugging Face**, and it can be accessed via (https://huggingface.co/wadecc/Wat2c).
 
@@ -42,7 +42,7 @@ python infering.py
   --dst_path {output_path}
   --invoke {invoked_functions}
 ```
-### 2. Evaluation
+### Evaluation
 
 #### CodeBLEU
 In Section 5.2 of our paper, we disscuss one of the External Threats to Validity, i.e., **the limitations of CodeBLEU**, which is detailed in -> [Limitations of CodeBLEU](Scripts/Metrics/Codebleu/README.md)
@@ -58,7 +58,7 @@ python cal_codebleu.py
 #### Others
 Besides, we also evaluate our method using additional metrics such as AST Edit Distance Similarity, Cosine Similarity, Cyclomatic Complexity Similarity, and code bloat rate. To compute these metrics, please run [eval.ipynb](Scripts/Metrics/Similarity_codebloat/eval.ipynb)
 
-### 3. Comparation between WaDec and Ghidra
+## Comparation between WaDec and Ghidra
 
 <p align="center">
   <img src="Scripts/Metrics/Codebleu/figures/case.png" alt="case" width="80%"/>
