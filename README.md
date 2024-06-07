@@ -4,7 +4,7 @@ WaDec is an approach leveraging a fine-tuned LLM to decompile Wasm binary code i
 
 ## Dataset
 
-Our dataset is specifically designed for decompiling WebAssembly (Wasm). It includes100k+ pairs of WebAssembly Text (Wat) snippets and C code snippets at the loop level, providing a finer granularity than function-level datasets. The dataset has been uploaded to the [huggingface](https://huggingface.co/wadecc/Wat2c). The main features of the dataset are as follows:
+Our dataset is specifically designed for decompiling WebAssembly (Wasm). It includes100k+ pairs of WebAssembly Text (Wat) snippets and C code snippets at the loop level, providing a finer granularity than function-level datasets. The dataset has been uploaded to **Hugging Face**, and it is available at (https://huggingface.co/wadecc/FGW2C). The main features of the dataset are as follows:
 
 - **Wat snippet**: Segmented based on loop blocks.
 - **C snippet**: Segmented based on loop blocks, corresponding to wat snippet.
@@ -31,7 +31,10 @@ cd WaDec-EDDE
 ```
 
 ### Infering
-[infering.py](Scripts/infering.py)
+
+Our fine-tuned LLM has been uploaded to **Hugging Face**, and it can be accessed via (https://huggingface.co/wadecc/Wat2c).
+
+For infering, please run [infering.py](Scripts/infering.py):
 ```bash
 python infering.py
   --base_model wadecc/Wat2c
@@ -42,7 +45,9 @@ python infering.py
 ### Evaluation
 
 #### CodeBLEU
-External Threat to Validity: the limitations of CodeBLEU: [Limits of CodeBLEU](Scripts/Metrics/Codebleu/README.md)
+In Section 5.2 of our paper, we disscuss one of the External Threats to Validity, i.e., **the limitations of CodeBLEU**, which is detailed in -> [Limits of CodeBLEU](Scripts/Metrics/Codebleu/README.md)
+
+For calculating CodeBLEU scores, please run [cal_codebleu.py](Scripts/Metrics/Codebleu/cal_codebleu.py):
 ```
 python cal_codebleu.py
   --reference {source_c}
@@ -51,5 +56,4 @@ python cal_codebleu.py
 ```
 
 #### Others
-
-[Similarities & Codebloat](Scripts/Metrics/Similarity_codebloat/eval.ipynb)
+For calculating Similarities scores and codebloat rate, please run [eval.ipynb](Scripts/Metrics/Similarity_codebloat/eval.ipynb)
