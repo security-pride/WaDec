@@ -1,13 +1,13 @@
 ### A comparation between WaDec and Ghidra
 
-![case](https://github.com/XinyuShe/WaDec/assets/60457190/433f4ed7-9c81-49bc-8d6a-b125cabb3a0f)
+![case](figures/case.png)
 
 We can see apparent issues with the decompilation result of the Wasm plugin in Ghidra. First, there are errors in the decompilation result, which clearly indicates that Ghidra has certain problems with decompiling Wasm. Second, by comparing Ghidra's decompilation result with the source code, we can find that Ghidra cannot recover string constants, which severely affects the semantics and I/O of the code. Moreover, compared with the source code and WaDec's output, there is a significant code bloat. Finally, there are varying degrees of inconsistencies in function names, variable types, and other aspects.
 
 ### Limitations of CodeBLEU
 During our evaluation phase, we used CodeBLEU as one of our metrics. However, in calculating CodeBLEU, we encountered numerous limitations, particularly its inadequacy in accurately evaluating the similarity of C code in many instances. To illustrate these issues, we have selected several representative examples for case study analysis.
 
-![Dead_code](https://github.com/XinyuShe/WaDec/assets/60457190/aa5feae0-8388-43fb-928d-e172bbe7e1ff)
+![Dead_code](figures/codebleu_limit_3.png)
 
 
 **Dead code.**
