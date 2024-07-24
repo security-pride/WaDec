@@ -1,121 +1,89 @@
-import math
-import numpy
+import re
+from apted import APTED,PerEditOperationConfig
+from apted.helpers import Tree
 from tree_sitter import Language, Parser, Node
-C_LANGUAGE = Language(f'{os.getcwd()}/Metrics/Codebleu/so/my-languages.so', 'c')
-parser = Parser()
-parser.set_language(C_LANGUAGE)
- 
-def point(x, y):
-    return '[' + str(x) + ',' + str(y) + ']'
- 
-def traverse(node:Node):
-    seq = []
-    cursor = node.walk()
 
-    while True:
-        seq.append(cursor.node.type)
-        if cursor.goto_first_child():
-            continue
-        while not cursor.goto_next_sibling():
-            if not cursor.goto_parent():
-                return seq
-class CodeParse(object):
-    def __init__(self, fileA, fileB):
-        self.codeA = open(fileA, encoding="utf-8").read()
-        self.codeB = open(fileB, encoding="utf-8").read()
-        self.nodeA = parser.parse(bytes(self.codeA, "utf8")).root_node
-        self.nodeB = parser.parse(bytes(self.codeB, "utf8")).root_node
-        self.seqA = traverse(self.nodeA)
-        self.seqB = traverse(self.nodeB)
- 
- 
-class CalculateSimilarity(object):
-    def __init__(self, A, B, W, M, N,identifier_weight = 0.5):
-        self.A = A
-        self.B = B
-        self.W = W
-        self.M = M
-        self.N = N
-        self.identifier_weight = identifier_weight
-        self.similarity = []
-        self.SimthWaterman(self.A, self.B, self.W)
- 
-    def score(self,a, b):
-        if a == b:
-            return self.M
+
+class Node:
+    def __init__(self, name, path):
+        self.id = path
+        self.name = name
+        self.children = []
+
+    def add_child(self, node):
+        self.children.append(node)
+def parse_tree_string(tree_string):
+    stack = []
+    current_node = None
+    tokens = tree_string.replace('(', ' ( ').replace(')', ' ) ').split()
+
+    for token in tokens:
+        if token == '(':
+            if current_node is not None:
+                stack.append(current_node)
+            current_node = Node("", "")
+        elif token == ')':
+            if stack:
+                parent_node = stack.pop()
+                parent_node.add_child(current_node)
+                current_node = parent_node
+            else:
+                # Extra closing parenthesis, ignore it
+                continue
         else:
-            return self.N
- 
-    def traceback(self,A, B, H, path:dict, value:list, result:list):
-        if value:
-            temp = value[0]
-            result.append(temp)
-            value = path[temp]
-            x = int((temp.split(',')[0]).strip('['))
-            y = int((temp.split(',')[1]).strip(']'))
-        else:
-            return
-        if H[x, y] == 0: 
-            xx = 0
-            yy = 0
-            sim = 0
-            for item in range(len(result) - 2, -1, -1):
-                position = result[item]
-                x = int((position.split(',')[0]).strip('['))
-                y = int((position.split(',')[1]).strip(']'))
-                if x == xx:
-                    pass
-                elif y == yy:
-                    pass
-                else:
-                    sim = sim + 1
-                xx = x
-                yy = y
-            self.similarity.append(sim * 2 / (len(A) + len(B)))
- 
-        else:
-            self.traceback(A, B, H, path, value, result)
- 
-    def SimthWaterman(self, A, B, W):
-        n, m = len(A), len(B)
-        H = numpy.zeros([n + 1, m + 1], int)
-        path = {}
-        for i in range(0, n + 1):
-            for j in range(0, m + 1):
-                if i == 0 or j == 0:
-                    path[point(i, j)] = []
-                else:
-                    s = self.score(A[i - 1], B[j - 1])
-                    L = H[i - 1, j - 1] + s
-                    P = H[i - 1, j] - W
-                    Q = H[i, j - 1] - W
-                    H[i, j] = max(L, P, Q, 0)
- 
-                    path[point(i, j)] = []
-                    if math.floor(L) == H[i, j]:
-                        path[point(i, j)].append(point(i - 1, j - 1))
-                    if math.floor(P) == H[i, j]:
-                        path[point(i, j)].append(point(i - 1, j))
-                    if math.floor(Q) == H[i, j]:
-                        path[point(i, j)].append(point(i, j - 1))
- 
-        end = numpy.argwhere(H == numpy.max(H))
-        for pos in end:
-            key = point(pos[0], pos[1])
-            value = path[key]
-            result = [key]
-            self.traceback(A, B, H, path, value, result)
- 
-    def Answer(self):
-        return sum(self.similarity) / len(self.similarity)
- 
- 
+            # Use the content between brackets as the node name
+            name = token.strip('()')
+            if current_node is None:
+                current_node = Node("", "")
+            if name!="":
+                # if ":" in name:
+                #     name=name.split(":")[0]
+                current_node.name = name
+            else: current_node.name = " "
+
+    return current_node
+def calculate_node_count(node):
+    """Calculate the number of nodes in the tree."""
+    count = 1  # Count the current node
+
+    # Recursively calculate the number of nodes for each child
+    for child in node.children:
+        count += calculate_node_count(child)
+
+    return count
+
+def get_Trees(lan,origin,target):
+    C_LANGUAGE = Language('xxx/tree_sitter/build/my-languages.so', 'c')
+    parser = Parser()
+    parser.set_language(C_LANGUAGE)
+    tree1 = parser.parse(bytes(origin, encoding='UTF-8'))
+    tree2 = parser.parse(bytes(target, encoding='UTF-8'))
+    tree1_str=tree1.root_node.sexp()
+    tree2_str=tree2.root_node.sexp()
+    len1=str(tree1_str).count(")")
+    len2=str(tree2_str).count(")")
+    tree_origin=parse_tree_string(tree1_str)
+    tree_target=parse_tree_string(tree2_str)
+    return tree_origin,tree_target,max(len1,len2)
+
+def Calaulte(lan,str1,str2,d,i,r):
+    
+    tree1,tree2,max_len=get_Trees(lan,str1,str2)
+    apted = APTED(tree1, tree2,PerEditOperationConfig(d, i, r))
+    res = apted.compute_edit_distance()
+    if max_len>0:
+        if res>max_len:
+            return(0.0)
+        else : return((max_len-res)/max_len) 
+    else: return(1.0)
+
 def get_AED_SCORE(original_path,decompiled_path):
-    AST = CodeParse(original_path,decompiled_path)
-    RES = CalculateSimilarity(AST.seqA, AST.seqB, 1, 1, -1/3)
-    return RES.Answer()
- 
-if __name__ == "__main__":
-    original_path = 'xxx_renamed.c'
-    decompiled_path = 'xxx_decompiled.c'
-    print(get_AED_SCORE(original_path,decompiled_path))
+    RES = Calaulte(
+       'c',
+       open(original_path).read(),
+       open(decompiled_path).read(), 
+       1.0, 
+       0.8, 
+       1.0
+    )
+    return RES
