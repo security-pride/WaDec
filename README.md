@@ -26,8 +26,8 @@ Ensure you have the following prerequisites installed:
 Clone the repository to your local machine:
 
 ```bash
-git clone https://anonymous.4open.science/r/WaDec-EDDE
-cd WaDec-EDDE
+git clone https://github.com/security-pride/WaDec.git
+cd WaDec
 ```
 
 ### Infering
